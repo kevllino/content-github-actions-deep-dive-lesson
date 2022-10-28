@@ -61,11 +61,11 @@ jobs:
           draft: false
           prerelease: false
       - name: Check out code
-          uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: download artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: zipped-bundle
+        uses: actions/download-artifact@v2
+        with:
+          name: zipped-bundle
       - name: upload realease asset
         uses: actions/upload-release-asset@v1
         env:
