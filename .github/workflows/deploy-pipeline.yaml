@@ -49,10 +49,12 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Deploy-docs
+      - name: convert md to html
         uses: docker://pandoc/core:2.9
         with:
-          args: >-  # allows you to break string into multiple lines
-            --standalone
-            --output=index.html
-            docs/userguide.md
+          args: userguide.md -t html -o docs/index.html
+      - name: deploy site
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          folder: docs
+          branch: gh-pages
