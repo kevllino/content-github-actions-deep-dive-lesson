@@ -49,12 +49,7 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: create file
-        run: |
-          mkdir docs
-          touch docs/userguide.md
-          echo "hiii" >> docs/userguide.md
-          chmod 777 docs/userguide.md
+
       - name: convert md to html
         uses: docker://pandoc/core:2.9
         with:
