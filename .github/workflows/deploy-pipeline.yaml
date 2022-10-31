@@ -49,12 +49,16 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: create docs folder
-        run: mkdir docs
+      - name: create file
+        run: |
+          mkdir docs
+          touch docs/userguide.md
+          echo "hiii" >> docs/userguide.md
+          chmod 777 docs/userguide.md
       - name: convert md to html
         uses: docker://pandoc/core:2.9
         with:
-          args: userguide.md -t html -o docs/index.html
+          args: docs/userguide.md -t html -o docs/index.html
       - name: deploy site
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
